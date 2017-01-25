@@ -36,8 +36,7 @@ int main(int argc, char* argv[]) {
         vetor.push_back(num);
     }
 
-   /*exibe_lista(vetor);
-
+   /*exibe_lista(vetor); //Caso use o scrip exec.py, terá que descomentar este trecho e comentar o trecho acima
     ifstream isfile ("example.in");
     vector<int> vetor;
     int n;
