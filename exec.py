@@ -6,7 +6,7 @@ print("Escolha o algoritmo de Ordenacao: \n" + "(1) - Insertion\n" + "(2) - Sele
 arg = input()
 
 sp.call(["make"])
-#sp.call(["./algsort", str(arg) ,input="< example.in", output="> saida.out"])
+#sp.call(["./algsort", str(arg)])
 cmd = "./algsort " + str(arg) + " < example.in > saida.txt"
 args = shlex.split(cmd)
 print (args)
