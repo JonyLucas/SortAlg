@@ -10,12 +10,13 @@ $ make
 $ ./algsort 2 < example.in > saida.out
 
 OBS: o parametro de comando '2' é um parametro de entrada do programa (que vai de 1 à 5) para especificar o algoritmo de ordenação que você deseja executar.
-(1) - Insertion sort, 
 
-(2) - Selection sort, 
+(1) - Insertion sort 
 
-(3) - Quick sort, 
+(2) - Selection sort 
 
-(4) - Merge sort, 
+(3) - Quick sort
 
-(5) - Heap sort, 
+(4) - Merge sort 
+
+(5) - Heap sort 
