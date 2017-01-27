@@ -27,13 +27,13 @@ bool ordenado(vector<int> vetor);
 
 int main(int argc, char* argv[]) {
 
-    int num;
+    int num, tam;
     
     vector<int> vetor;
     
-    cin >> num; //Dispensa o primeiro elemento, que corresponde ao número de elementos
+    cin >> tam; //O primeiro elemento corresponde ao número de elementos do vetor
 
-    while(cin.good()){
+    for(int i = 0; i < tam; i++){
         cin >> num;
         vetor.push_back(num);
     }
