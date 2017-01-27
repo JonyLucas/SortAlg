@@ -31,7 +31,7 @@ int main(int argc, char* argv[]) {
     
     vector<int> vetor;
     
-    cin >> num;
+    cin >> num; //Dispensa o primeiro elemento, que corresponde ao número de elementos
 
     while(cin.good()){
         cin >> num;
