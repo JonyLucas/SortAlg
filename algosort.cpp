@@ -30,6 +30,8 @@ int main(int argc, char* argv[]) {
     int num;
     
     vector<int> vetor;
+    
+    cin >> num;
 
     while(cin.good()){
         cin >> num;
