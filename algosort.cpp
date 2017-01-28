@@ -105,7 +105,7 @@ int main(int argc, char* argv[]) {
             time = (double)(clock() - start_time)/CLOCKS_PER_SEC;
 
             if(ordenado(vetor_insert, tam)){
-                cout << "vetor insertion" << endl;
+                cout << "Insertion sort - concluido" << endl;
                 if(show) exibe_lista(vetor_insert, tam);
                 osfile << time << ", 0, 0, 0, 0"; /**"Vetor insertion - Tempo decorrido(s): "*/
             }
@@ -119,7 +119,7 @@ int main(int argc, char* argv[]) {
             time = (double)(clock() - start_time)/CLOCKS_PER_SEC;
 
             if(ordenado(vetor_select, tam)) {
-                cout << "vetor selection" << endl;
+                cout << "Selection sort - concluido" << endl;
                 if(show) exibe_lista(vetor_select, tam);
                 osfile << "0, " << time << ", 0, 0, 0";
             }
@@ -133,7 +133,7 @@ int main(int argc, char* argv[]) {
             time = (double)(clock() - start_time)/CLOCKS_PER_SEC;
 
             if(ordenado(vetor_quick, tam)) {
-                cout << "vetor quick" << endl;
+                cout << "Quick sort - concluido" << endl;
                 if(show) exibe_lista(vetor_quick, tam);
                 osfile << "0, 0, " << time << ", 0, 0";
             }
@@ -147,7 +147,7 @@ int main(int argc, char* argv[]) {
             time = (double)(clock() - start_time)/CLOCKS_PER_SEC;
 
             if(ordenado(vetor_merge, tam)) {
-                cout << "vetor merge" << endl;
+                cout << "Merge sort - concluido" << endl;
                 if(show) exibe_lista(vetor_merge, tam);
                 osfile << "0, 0, 0, "<< time << ", 0";
             }
@@ -161,7 +161,7 @@ int main(int argc, char* argv[]) {
             time = (double)(clock() - start_time)/CLOCKS_PER_SEC;
 
             if(ordenado(vetor_heap, tam)) {
-                cout << "vetor heap" << endl;
+                cout << "Heap sort - concluido" << endl;
                 if(show) exibe_lista(vetor_heap, tam);
                 osfile << "0, 0, 0, 0, " << time;
             }
@@ -175,7 +175,7 @@ int main(int argc, char* argv[]) {
             time = (double)(clock() - start_time)/CLOCKS_PER_SEC;
 
             if(ordenado(vetor_insert, tam)){
-                cout << "vetor insertion" << endl;
+                cout << "Insertion sort - concluido" << endl;
                 if(show) exibe_lista(vetor_insert, tam);
                 osfile << time << ", ";;
             }
@@ -185,7 +185,7 @@ int main(int argc, char* argv[]) {
             time = (double)(clock() - start_time)/CLOCKS_PER_SEC;
 
             if(ordenado(vetor_select, tam)) {
-                cout << "vetor selection" << endl;
+                cout << "Selection sort - concluido" << endl;
                 if(show) exibe_lista(vetor_select, tam);
                 osfile << time << ", ";
             }
@@ -195,7 +195,7 @@ int main(int argc, char* argv[]) {
             time = (double)(clock() - start_time)/CLOCKS_PER_SEC;
 
             if(ordenado(vetor_quick, tam)) {
-                cout << "vetor quick" << endl;
+                cout << "Quick sort - concluido" << endl;
                 if(show) exibe_lista(vetor_quick, tam);
                 osfile << time << ", ";
             }
@@ -205,7 +205,7 @@ int main(int argc, char* argv[]) {
             time = (double)(clock() - start_time)/CLOCKS_PER_SEC;
 
             if(ordenado(vetor_merge, tam)) {
-                cout << "vetor merge" << endl;
+                cout << "Merge sort - concluido" << endl;
                 if(show) exibe_lista(vetor_merge, tam);
                 osfile << time << ", ";
             }
@@ -215,7 +215,7 @@ int main(int argc, char* argv[]) {
             time = (double)(clock() - start_time)/CLOCKS_PER_SEC;
 
             if(ordenado(vetor_heap, tam)) {
-                cout << "vetor heap" << endl;
+                cout << "Heap sort - concluido" << endl;
                 if(show) exibe_lista(vetor_heap, tam);
                 osfile << time;
             }
