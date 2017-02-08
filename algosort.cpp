@@ -9,8 +9,10 @@
 **/
 
 #include <iostream>
-#include <fstream>
+#include <algorithm>
 #include <cstdlib>
+#include <fstream>
+#include <stdlib.h>
 #include <time.h>
 
 using namespace std;
@@ -69,45 +71,40 @@ int main(int argc, char* argv[]) {
 
     }
 
-    int vetor[tam], vetor_insert[tam], vetor_select[tam], 
-        vetor_quick[tam], vetor_merge[tam], vetor_heap[tam];
+    int origin_array[tam], sort_array[tam];
 
     if(infs.is_open()){
 
         for(int i = 0; i < tam; i++){
 
-            infs >> vetor[i];
-
-            vetor_insert[i] = vetor_select[i] = vetor[i];
-            vetor_quick[i] = vetor_merge[i] = vetor_heap[i] = vetor[i];
+            infs >> origin_array[i];
 
         }
 
     }else{
         for(int i = 0; i < tam; i++){
             
-            cin >> vetor[i];
-
-            vetor_insert[i] = vetor_select[i] = vetor[i];
-            vetor_quick[i] = vetor_merge[i] = vetor_heap[i] = vetor[i];
+            cin >> origin_array[i] ;
 
         }
     }
 
-    if(show) { exibe_lista(vetor, tam); }
+    copy(origin_array, origin_array + tam, sort_array);
+
+    if(show) { exibe_lista(origin_array, tam); }
 
     switch(arg){
 
         case 1:
 
             start_time = clock();
-            insertion_sort(vetor_insert, tam);
+            insertion_sort(sort_array, tam);
             time = (double)(clock() - start_time)/CLOCKS_PER_SEC;
 
-            if(ordenado(vetor_insert, tam)){
+            if(ordenado(sort_array, tam)){
                 cout << "Insertion sort - concluido" << endl;
-                if(show) exibe_lista(vetor_insert, tam);
-                osfile << time << ", 0, 0, 0, 0"; /**"Vetor insertion - Tempo decorrido(s): "*/
+                if(show) exibe_lista(sort_array, tam);
+                osfile << time << ", 0, 0, 0, 0, 0"; /**"Vetor insertion - Tempo decorrido(s): "*/
             }
 
             break;
@@ -115,13 +112,13 @@ int main(int argc, char* argv[]) {
         case 2:
 
             start_time = clock();
-            selection_sort(vetor_select, tam);
+            selection_sort(sort_array, tam);
             time = (double)(clock() - start_time)/CLOCKS_PER_SEC;
 
-            if(ordenado(vetor_select, tam)) {
+            if(ordenado(sort_array, tam)) {
                 cout << "Selection sort - concluido" << endl;
-                if(show) exibe_lista(vetor_select, tam);
-                osfile << "0, " << time << ", 0, 0, 0";
+                if(show) exibe_lista(sort_array, tam);
+                osfile << "0, " << time << ", 0, 0, 0, 0";
             }
 
             break;
@@ -129,13 +126,13 @@ int main(int argc, char* argv[]) {
         case 3:
 
             start_time = clock();
-            quick_sort(vetor_quick, 0, tam-1);
+            quick_sort(sort_array, 0, tam-1);
             time = (double)(clock() - start_time)/CLOCKS_PER_SEC;
 
-            if(ordenado(vetor_quick, tam)) {
+            if(ordenado(sort_array, tam)) {
                 cout << "Quick sort - concluido" << endl;
-                if(show) exibe_lista(vetor_quick, tam);
-                osfile << "0, 0, " << time << ", 0, 0";
+                if(show) exibe_lista(sort_array, tam);
+                osfile << "0, 0, " << time << ", 0, 0, 0";
             }
 
             break;
@@ -143,13 +140,13 @@ int main(int argc, char* argv[]) {
         case 4:
 
             start_time = clock();
-            merge_sort(vetor_merge, tam, 0, tam-1);
+            merge_sort(sort_array, tam, 0, tam-1);
             time = (double)(clock() - start_time)/CLOCKS_PER_SEC;
 
-            if(ordenado(vetor_merge, tam)) {
+            if(ordenado(sort_array, tam)) {
                 cout << "Merge sort - concluido" << endl;
-                if(show) exibe_lista(vetor_merge, tam);
-                osfile << "0, 0, 0, "<< time << ", 0";
+                if(show) exibe_lista(sort_array, tam);
+                osfile << "0, 0, 0, "<< time << ", 0, 0";
             }
 
             break;
@@ -157,66 +154,131 @@ int main(int argc, char* argv[]) {
         case 5:
 
             start_time = clock();
-            heap_sort(vetor_heap, tam);
+            heap_sort(sort_array, tam);
             time = (double)(clock() - start_time)/CLOCKS_PER_SEC;
 
-            if(ordenado(vetor_heap, tam)) {
+            if(ordenado(sort_array, tam)) {
                 cout << "Heap sort - concluido" << endl;
-                if(show) exibe_lista(vetor_heap, tam);
-                osfile << "0, 0, 0, 0, " << time;
+                if(show) exibe_lista(sort_array, tam);
+                osfile << "0, 0, 0, 0, " << time << ", 0";
             }
 
             break;
 
+        case 6:
+
+            start_time = clock();
+            sort(sort_array, sort_array + tam);
+            time = (double)(clock() - start_time)/CLOCKS_PER_SEC;
+
+            if(ordenado(sort_array, tam)) {
+                cout << "sort C++ - concluido" << endl;
+                if(show) exibe_lista(sort_array, tam);
+                osfile << "0, 0, 0, 0, 0, " << time;
+            }
+
+            break;
+ 
         case 0:
 
-            start_time = clock();
-            insertion_sort(vetor_insert, tam);
-            time = (double)(clock() - start_time)/CLOCKS_PER_SEC;
+            /*----------- Insertion Sort  ------------*/
+            if(tam <= 500000){
 
-            if(ordenado(vetor_insert, tam)){
-                cout << "Insertion sort - concluido" << endl;
-                if(show) exibe_lista(vetor_insert, tam);
-                osfile << time << ", ";;
+                start_time = clock();
+                insertion_sort(sort_array, tam);
+                time = (double)(clock() - start_time)/CLOCKS_PER_SEC;
+
+                if(ordenado(sort_array, tam)){
+                    cout << "Insertion sort - concluido" << endl;
+                    if(show) exibe_lista(sort_array, tam);
+                    osfile << time << ", ";;
+                }
+            }else{
+                    cout << "Insertion sort - ignorado" << endl;
+                    osfile << "- , ";;
             }
 
-            start_time = clock();
-            selection_sort(vetor_select, tam);
-            time = (double)(clock() - start_time)/CLOCKS_PER_SEC;
+            /*----------- Selection Sort  ------------*/
 
-            if(ordenado(vetor_select, tam)) {
-                cout << "Selection sort - concluido" << endl;
-                if(show) exibe_lista(vetor_select, tam);
-                osfile << time << ", ";
+            if(tam <= 500000){
+
+                copy(origin_array, origin_array + tam, sort_array);
+
+                start_time = clock();
+                selection_sort(sort_array, tam);
+                time = (double)(clock() - start_time)/CLOCKS_PER_SEC;
+
+                if(ordenado(sort_array, tam)) {
+                    cout << "Selection sort - concluido" << endl;
+                    if(show) exibe_lista(sort_array, tam);
+                    osfile << time << ", ";
+                }
+
+            }else{
+                cout << "Selection sort - Ignorado" << endl;
+                osfile <<  "- , ";
             }
 
+            /*----------- Quick Sort  ------------*/
+
+            copy(origin_array, origin_array + tam, sort_array);
+
             start_time = clock();
-            quick_sort(vetor_quick, 0, tam-1);
+            quick_sort(sort_array, 0, tam-1);
             time = (double)(clock() - start_time)/CLOCKS_PER_SEC;
 
-            if(ordenado(vetor_quick, tam)) {
+            if(ordenado(sort_array, tam)) {
                 cout << "Quick sort - concluido" << endl;
-                if(show) exibe_lista(vetor_quick, tam);
+                if(show) exibe_lista(sort_array, tam);
                 osfile << time << ", ";
             }
 
-            start_time = clock();
-            merge_sort(vetor_merge, tam, 0, tam-1);
-            time = (double)(clock() - start_time)/CLOCKS_PER_SEC;
+            /*----------- Merge Sort  ------------*/
 
-            if(ordenado(vetor_merge, tam)) {
-                cout << "Merge sort - concluido" << endl;
-                if(show) exibe_lista(vetor_merge, tam);
-                osfile << time << ", ";
+            if(tam <= 500000){
+                
+                copy(origin_array, origin_array + tam, sort_array);
+
+                start_time = clock();
+                merge_sort(origin_array, tam, 0, tam-1);
+                time = (double)(clock() - start_time)/CLOCKS_PER_SEC;
+
+                if(ordenado(sort_array, tam)) {
+                    cout << "Merge sort - concluido" << endl;
+                    if(show) exibe_lista(sort_array, tam);
+                    osfile << time << ", ";
+                }
+
+            }else{
+                cout << "Selection sort - Ignorado" << endl;
+                osfile <<  "- , ";
             }
 
+            /*----------- Heap Sort  ------------*/
+
+            copy(origin_array, origin_array + tam, sort_array);
+
             start_time = clock();
-            heap_sort(vetor_heap, tam);
+            heap_sort(sort_array, tam);
             time = (double)(clock() - start_time)/CLOCKS_PER_SEC;
 
-            if(ordenado(vetor_heap, tam)) {
+            if(ordenado(sort_array, tam)) {
                 cout << "Heap sort - concluido" << endl;
-                if(show) exibe_lista(vetor_heap, tam);
+                if(show) exibe_lista(sort_array, tam);
+                osfile << time << ", ";
+            }
+
+            /*----------- Sort c++ ------------*/
+
+            copy(origin_array, origin_array + tam, sort_array);
+
+            start_time = clock();
+            sort(sort_array, sort_array + tam);
+            time = (double)(clock() - start_time)/CLOCKS_PER_SEC;
+
+            if(ordenado(sort_array, tam)) {
+                cout << "sort C++ - concluido" << endl;
+                if(show) exibe_lista(sort_array, tam);
                 osfile << time;
             }
 

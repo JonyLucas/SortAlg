@@ -9,7 +9,8 @@ else:
 
 sp.call(["make"])
 
-print("Escolha o algoritmo de Ordenacao: \n" + "(0) - Todos\n" + "(1) - Insertion\n" + "(2) - Selecion\n" + "(3) - Quick\n" + "(4) - Merge\n" + "(5) - Heap : ")
+print("Escolha o algoritmo de Ordenacao: \n" + "(0) - Todos\n" + "(1) - Insertion\n" + "(2) - Selecion\n" + "(3) - Quick\n" + "(4) - Merge\n" 
++ "(5) - Heap\n" + "(6) - Sort C++ : ")
 
 arg = input()
 
@@ -27,6 +28,8 @@ fnames.sort()
 
 for filename in fnames:
 	print (filename)
-	sp.call(["./algsort",filename, str(arg), arg_show])
+	sp.call(["./algsort", filename, str(arg), arg_show])
+
+
 
 
