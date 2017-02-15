@@ -50,12 +50,21 @@ public class BucketSort {
 		}
 		
 		//System.out.println("Buckets: " + buckets);
+
+
+		int offset = 0;
+
+		if(min < 0)
+			offset = Math.abs(min);
+
 		
-		int div = (int)Math.ceil((max + 1f)/B);
+		int div = (int)Math.ceil((max + offset + 1f)/B);
 		
 		//System.out.println("Divider: " + div);
 		
-		arr = bucket_sort(arr, div);
+		System.out.println("Offset: " + offset);
+
+		arr = bucket_sort(arr, div, offset);
 		
 		//System.out.println("Vetor ordenado: " + arr);
 
@@ -64,11 +73,11 @@ public class BucketSort {
 		scan.close();
 	}
 	
-	public static ArrayList<Integer> bucket_sort(ArrayList<Integer> arr, int div){
+	public static ArrayList<Integer> bucket_sort(ArrayList<Integer> arr, int div, int offset){
 		
 		ArrayList<Integer> arr_ord = new ArrayList<Integer>();
 		for(int i = 0; i < arr.size(); i++){
-			int j = (int) Math.floor(arr.get(i)*1.0/div);
+			int j = (int) Math.floor((arr.get(i)+offset)*1.0/div);
 			buckets.get(j).add(arr.get(i));
 		}
 		

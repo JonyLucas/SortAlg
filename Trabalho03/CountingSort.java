@@ -36,24 +36,27 @@ public class CountingSort {
 		
 		//System.out.println("Min: " + min + " Max: " + max);
 		
-		int[] cont = new int[max+1];
-		int[] aux = new int[n];
+		int offset = 0;
+		
+		if(min < 0){
+			offset = Math.abs(min);
+		}
+		
+		int[] cont = new int[max+1+offset];
+		int[] aux = new int[arr.length];
 		cont[0] = 0;
 		
 		for(int i = 0; i < n; i++){
-			cont[arr[i]]++;
+			cont[arr[i]+offset]++;
 		}
-		//exibeLista(cont);
 		
-		for(int i = 1; i < max+1; i++){
+		for(int i = 1; i < cont.length; i++){
 			cont[i] += cont[i-1];
 		}
 		
-		//exibeLista(cont);
-		
 		for(int i = 0; i < n; i++){
-            aux[cont[arr[i]]-1] = arr[i];
-            cont[arr[i]]--;			
+            aux[cont[arr[i]+offset]-1] = arr[i];
+            cont[arr[i]+offset]--;			
 		}
 		
 		arr = aux;
