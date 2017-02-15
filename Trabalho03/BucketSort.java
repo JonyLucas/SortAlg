@@ -62,7 +62,7 @@ public class BucketSort {
 		
 		//System.out.println("Divider: " + div);
 		
-		System.out.println("Offset: " + offset);
+		//System.out.println("Offset: " + offset);
 
 		arr = bucket_sort(arr, div, offset);
 		
